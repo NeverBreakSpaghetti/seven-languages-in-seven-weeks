@@ -19,9 +19,27 @@ DumbFibonacci fib := method(fibonacciIndex,
     currentNumber
 )
 
-DumbFibonacci fib(1) println
-DumbFibonacci fib(2) println
-DumbFibonacci fib(3) println
-DumbFibonacci fib(4) println
-DumbFibonacci fib(5) println
-DumbFibonacci fib(6) println
+writeln("Iterative")
+DumbFibonacci fib(1) println;
+DumbFibonacci fib(2) println;
+DumbFibonacci fib(3) println;
+DumbFibonacci fib(4) println;
+DumbFibonacci fib(5) println;
+DumbFibonacci fib(6) println;
+
+RecursiveFibonacci := Object clone
+RecursiveFibonacci fib := method(fibonacciIndex,
+    if(fibonacciIndex < 2,
+        fibonacciIndex,
+        self fib(fibonacciIndex-1) + self fib(fibonacciIndex-2)
+    )
+)
+
+writeln("------------------")
+writeln("Recursive")
+RecursiveFibonacci fib(1) println;
+RecursiveFibonacci fib(2) println;
+RecursiveFibonacci fib(3) println;
+RecursiveFibonacci fib(4) println;
+RecursiveFibonacci fib(5) println;
+RecursiveFibonacci fib(6) println;
