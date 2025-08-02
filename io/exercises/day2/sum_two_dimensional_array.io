@@ -3,12 +3,7 @@
 Sum := Object clone
 Sum total := method(twoDimensionalArray,
     totalAmount := 0
-    i := 0
-    while(i < twoDimensionalArray size,
-        array := twoDimensionalArray at(i)
-        totalAmount = totalAmount + array sum
-        i = i + 1
-    )
+    twoDimensionalArray foreach(array, totalAmount = totalAmount + array sum)
     totalAmount
 )
 
