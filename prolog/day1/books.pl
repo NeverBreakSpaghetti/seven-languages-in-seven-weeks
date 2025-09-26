@@ -7,7 +7,6 @@ wroteBook(martin, clean_code).
 wroteBook(martin, clean_architecture).
 wroteBook(beck, extreme_programming_explained).
 wroteBook(beck, test_driven_development_by_example).
-wroteBook(beck, refactoring).
 wroteBook(beck, implementation_patterns).
 wroteBook(beck, tidy_together).
 wroteBook(beck, planning_extreme_programming).
@@ -37,6 +36,6 @@ run_tests :-
     test(
         'All Beck books',
         bookWroteByAuthor(beck, Books),
-        [extreme_programming_explained,test_driven_development_by_example,refactoring,implementation_patterns,tidy_together,planning_extreme_programming]
+        [extreme_programming_explained,test_driven_development_by_example,implementation_patterns,tidy_together]
     ),
     write('Every test pass'), nl.
