@@ -24,17 +24,16 @@ test(Title, Function) :-
 
 test(Title, Function, Expected) :-
     (call(Function) ->
-        Function =.. [_|Args],
-        last(Args, ActualResult),
-        (ActualResult == Expected ->
+        Function =.. [_,_|ArrayResult],
+        extract(ArrayResult, Result),
+        (Result == Expected ->
             format('✓ ~w: PASS~n', [Title])
-        ;   format('✗ ~w: FAIL~n - Expected: ~w~n - Received: ~w~n', [Title, Expected, ActualResult])
+        ;   format('✗ ~w: FAIL~n - Expected: ~w~n - Received: ~w~n', [Title, Expected, Result])
         )
     ;   format('✗ ~w: FAIL (failed to execute function)~n', [Title])
     ).
 
-last([X], X).
-last([_|T], X) :- last(T, X).
+extract([X], X).
 
 run_tests :-
     test('Uncle Bob book', wroteBook(martin, clean_code)),
