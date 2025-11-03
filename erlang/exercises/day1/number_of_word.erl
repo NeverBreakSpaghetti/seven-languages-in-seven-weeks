@@ -4,8 +4,9 @@
 -export([count/1]).
 
 count([]) -> 0;
-count(String) -> countHelper(String).
+count(String) -> countHelper(String, is_not_in_word, 0).
 
-countHelper([])-> 1;
-countHelper([32 | Tail]) -> 1 + countHelper(Tail);
-countHelper([_ | Tail]) -> 0 + countHelper(Tail).
+countHelper([], _, NumberOfWords)-> NumberOfWords;
+countHelper([32 | Tail], _, NumberOfWords) -> countHelper(Tail, is_not_in_word, NumberOfWords);
+countHelper([_ | Tail], is_not_in_word, NumberOfWords) -> countHelper(Tail, is_in_word, NumberOfWords + 1);
+countHelper([_ | Tail], is_in_word, NumberOfWords) -> countHelper(Tail, is_in_word, NumberOfWords).
